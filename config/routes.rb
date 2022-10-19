@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     patch 'customers/withdraw',as: 'withdraw'
     get 'customers/unsubscribe',as: 'unsubscribe'
-    get 'customers/my_page'=>'custtomers#show',as: 'my_page'
+    get 'customers/my_page'=>'customers#show',as: 'my_page'
     get 'customers/infomation/edit'=>'customers#edit',as: 'edit_infomation'
     patch 'customers/infomation'=>'customers#update',as: 'infomation'
 

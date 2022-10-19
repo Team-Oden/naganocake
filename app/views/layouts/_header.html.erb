@@ -1,15 +1,16 @@
 <header>
   <div class="container">
     <div class="row">
-      <!--管理者がログインしているとき-->
-      <% if admin_signed_in? %>
-        <span>LOGO</span>
-      <!--それ以外-->
-      <% else %>
-        <% link_to "LOGO", root_path %>
-      <% end %>
-    
-      <ul>
+      <nav class="nav navbar-nav navbar-left">
+        <!--管理者がログインしているとき-->
+        <% if admin_signed_in? %>
+          <span>LOGO</span>
+        <!--それ以外-->
+        <% else %>
+          <% link_to "LOGO", root_path, class: "fas fa-birthday-cake" %>
+        <% end %>
+      </nav>
+      <ul class="nav-item navbar-nav navbar-right">
         <!--会員がログインしているとき-->
         <% if customer_signed_in? %>
           <li>ようこそ<!-- current_customer.family_name-->さん!</li>

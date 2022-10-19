@@ -1,0 +1,13 @@
+<header>
+  <% if admin_sign_in? %>
+    <span>LOGO</span>
+  <% else %>
+    <% link_to "LOGO", root_path %>
+  <% end %>
+  <ul>
+    <% if customer_sign_in? %>
+    <li>ようこそ<!--current_customer.family_name -->さん！</li>
+    <li><%= link_to "マイページ", </li
+    
+  </ul>
+</header>

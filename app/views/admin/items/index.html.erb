@@ -1,5 +1,15 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
+    <div class="col-md-10">
+      <h4 class="ml-5 mt-3", style="background-color: #eee; width:150px; padding-left: 12px;"><b>商品一覧</b></h4>
+    </div>
+    <div class="col-md-2 mt-3">
+      <%= link_to new_admin_item_path, class: , class: 'text-success' do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
     <%= render 'index', items:@items %>
   </div>
 </div>

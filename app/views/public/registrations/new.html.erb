@@ -1,91 +1,95 @@
 <div class="container">
   <div class="row">
-    <div class='ml-5 col-10 col-sm-10 col-lg-8 col-xl-6'>
-      <h4 class='mx-3'>新規会員登録</h4>
+    <div class='ml-5 col-10 col-sm-10 col-lg-8 col-xl-10'>
+      <h4 class='mx-5 my-5', style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom: 40px;"><strong>新規会員登録</strong></h4>
       
-      <table>
-        
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "public/shared/error_messages", resource: resource %>
-            <tr>
-              <div class="field">
-                <td><%= f.label :名前 %></td>
-                <td>
-                  (姓)<%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %>
-                </td>
-                <td>
-                  (名)<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-                </td>
-              </div>
-            </tr>
-            
-            <tr>
-              <div class="field">
-                <td><%= f.label :フリガナ %></td>
-                <td>
-                  (セイ)<%= f.text_field :family_kana, autofocus: true, autocomplete: "family_kana" %>
-                </td>
-                <td>
-                  (メイ)<%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %>
-                </td>
-              </div>
-            </tr>
-            
-            <tr>
-              <div class="field">
-                <td><%= f.label :メールアドレス %></td>
-                <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-              </div>
-            </tr>
-            
-            <tr>
-              <div class="field">
-                <td><%= f.label :郵便番号（ハイフンなし） %></td>
-                <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
-              </div>
-            </tr>
-            
-            <tr>
-              <div class="field">
-                <td><%= f.label :住所%></td>
-                <td><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
-              </div>
-            </tr>
-            
-            <tr>
-              <div class="field">
-                <td><%= f.label :電話番号（ハイフンなし）%></td>
-                <td><%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_nunber" %></td>
-              </div>
-            </tr>
-            
-            <tr>
-              <div class="field">
-                <td><%= f.label :パスワード（6文字以上） %></td>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
-                <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-              </div>
-           
-            <tr>
-              <div class="field">
-                <td><%= f.label :パスワード確認用 %></td>
-                <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-              </div>
-            </tr>
-            
-            <tr>
-              <div class="actions">
-                <td></td>
-                <td><%= f.submit "Sign up" %></td>
-              </div>
-            <tr>
-        <% end %>
-      </table>
-          
-          <h4>既に登録済みの方</h4>
-          <%= render "public/shared/links" %>
+        <table>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "public/shared/error_messages", resource: resource %>
+              <tr>
+                <div class="field">
+                  <td style="width:200px; ><%= f.label :名前 %></td>
+                  <td style="width:60px;" >(姓)</td>
+                  <td><%= f.text_field :family_name, style:"margin-bottom: 10px;", placeholder: "令和", autofocus: true, autocomplete: "family_name" %></td>
+                  <td style="width:60px;" >(名)</td>
+                  <td><%= f.text_field :first_name, style:"margin-bottom: 10px;", placeholder: "道子", autofocus: true, autocomplete: "first_name" %></td>
+                </div>
+              </tr>
+              
+              <tr>
+                <div class="field">
+                  <td><%= f.label :フリガナ %></td>
+                  <td>(セイ)</td>
+                  <td><%= f.text_field :family_kana, style:"margin-bottom: 10px;", placeholder: "レイワ", autofocus: true, autocomplete: "family_kana" %></td>
+                  <td>(メイ)</td>
+                  <td><%= f.text_field :first_kana, style:"margin-bottom: 10px;", placeholder: "ミチコ", autofocus: true, autocomplete: "first_kana" %></td>
+                </div>
+              </tr>
+              
+              <tr>
+                <div class="field">
+                  <td><%= f.label :メールアドレス %></td>
+                  <td></td>
+                  <td><%= f.email_field :email, style:"margin-bottom: 10px;", placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></td>
+                </div>
+              </tr>
+              
+              <tr>
+                <div class="field">
+                  <td><%= f.label :郵便番号（ハイフンなし） %></td>
+                  <td></td>
+                  <td><%= f.text_field :postal_code, style:"margin-bottom: 10px;", placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %></td>
+                </div>
+              </tr>
+              
+              <tr>
+                <div class="field">
+                  <td><%= f.label :住所%></td>
+                  <td></td>
+                  <td colspan = "3"><%= f.text_field :address, style:"margin-bottom: 10px;", placeholder: "東京都渋谷区代々木神園町０−０", size: 60, autofocus: true, autocomplete: "address" %></td>
+                </div>
+              </tr>
+              
+              <tr>
+                <div class="field">
+                  <td><%= f.label :電話番号（ハイフンなし）%></td>
+                  <td></td>
+                  <td><%= f.text_field :telephone_number, style:"margin-bottom: 10px;", placeholder: "00000000000", autofocus: true, autocomplete: "telephone_nunber" %></td>
+                </div>
+              </tr>
+              
+              <tr>
+                <div class="field">
+                  <td><%= f.label :パスワード（6文字以上） %></td>
+                  <td></td>
+                  <% if @minimum_password_length %>
+                  <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
+                  <% end %><br />
+                  <td><%= f.password_field :password, style:"margin-bottom: 10px;", autocomplete: "new-password" %></td>
+                </div>
+             
+              <tr>
+                <div class="field">
+                  <td><%= f.label :パスワード確認用 %></td>
+                  <td></td>
+                  <td><%= f.password_field :password_confirmation, style:"margin-bottom: 10px;", autocomplete: "new-password" %></td>
+                </div>
+              </tr>
+              
+              <tr>
+                <div class="actions">
+                  <td></td>
+                  <td></td>
+                  <td><%= f.submit "        新規登録        ", class: "btn btn-sm btn-success" %></td>
+                </div>
+              <tr>
+          <% end %>
+        </table>
+ 
+          <h4 class = "mx-3 my-3", style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;">既に登録済みの方</h4>
+          <div class="ml-5">
+            <%= render "public/shared/links" %>
+          </div>
         </div>
       </div>
     </div>

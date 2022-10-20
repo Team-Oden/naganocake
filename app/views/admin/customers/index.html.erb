@@ -10,12 +10,12 @@
             <th colspan="4">ステータス</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table table-borderless">
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td><%= link_to admin_customer_path(customer) do %>
-                <%= customer.family_name %><%= customer.first_name %>
+              <td><%= link_to admin_customer_path(customer),class: 'text-dark' do %>
+                <u><%= customer.family_name %><%= customer.first_name %></u>
                 <% end %>
               </td>
               <td><%= customer.email %></td>

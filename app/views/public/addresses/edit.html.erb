@@ -1,2 +1,33 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class='ml-5 col-10 col-sm-10 col-lg-8 col-xl-10'>
+      <h4 class='mx-5 my-5', style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom: 40px;"><strong>配送先編集</strong></h4>
+        <table>
+          <%= form_with model: @address, url: addresses_path do |f| %>
+            <tr>
+              <div class="field">
+                <td><%= f.label :郵便番号ハイフンなし %></td>
+                <td></td>
+                <td><%= f.text_field :postal_code, style:"margin-bottom: 10px;", placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="field">
+                <td><%= f.label :住所%></td>
+                <td></td>
+                <td><%= f.text_field :address, style:"margin-bottom: 10px;", placeholder: "東京都渋谷区代々木神園町０−０", size: 60, autofocus: true, autocomplete: "address" %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="field">
+                <td><%= f.label :宛名%></td>
+                <td></td>
+                <td><%= f.text_field :name, style:"margin-bottom: 10px;", placeholder: "長野契機", size: 60, autofocus: true, autocomplete: "name" %></td>
+              </div>
+            </tr>
+                  <%= f.submit '変更を保存',class: 'btn btn-success' %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-<%= form_with model: item, url:admin_items_path, local:true do |f| %>
+<%= form_with model: item, url:admin_item_path, local:true do |f| %>
   <div class="form-group">
     <%= f.label :image, "商品画像", class: 'col-sm-3' %>
     <%= f.file_field :image, class: 'col-sm-9 form-control-file item_image', accept: 'image/*' %>
@@ -27,7 +27,7 @@
     <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
   </div>
   <div class="form-group">
-    <%= f.submit "新規登録", class: 'btn btn-success' %>
+    <%= f.submit "変更を保存", class: 'btn btn-success' %>
   </div>
 <% end %>
 

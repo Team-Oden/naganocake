@@ -7,15 +7,14 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    # @customer = current_customer
   end
 
   def edit
-    # @customer = Customer.find(params[:id])
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
   end
 
   def update
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to admin_customer_path(@customer), notice: "会員情報を編集しました。"
     else

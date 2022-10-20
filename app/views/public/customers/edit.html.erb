@@ -1,27 +1,59 @@
-<h1>編集画面</h1>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-10'>
+      <h4 class="ml-5 mt-3", style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom: 40px;"><b>会員情報編集</b></b></h4>
 
-<%= form_with model: @customer, url: infomation_path, method: :patch do |f| %>
+      <table class=padding-left: 12px;>
 
-  <h2>氏名</h2>
-  <%= f.text_area :family_name %>
-  <%= f.text_area :first_name %>
+        <% if @customer.errors.any? %>
+          <%= @customer.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @customer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
 
-  <h2>フリガナ</h2>
-  <%= f.text_area :family_kana %>
-  <%= f.text_area :first_kana %>
+        <%= form_with model: @customer, url: infomation_path, method: :patch do |f| %>
 
-  <h2>郵便番号</h2>
-  <%= f.text_area :postal_code %>
+          <tr>
+            <td style="width:160px; ">氏名</td>
+            <td><%= f.text_field :family_name,style:"margin-right:10px; margin-bottom: 20px;" %></td>
+            <td><%= f.text_field :first_name,style:"margin-right:10px; margin-bottom: 20px;" %></td>
+          </tr>
+          <tr>
+            <td style="width:160px">フリガナ</td>
+            <td><%= f.text_field :family_kana,style:"margin-right:10px; margin-bottom: 20px;" %></td>
+            <td><%= f.text_field :first_kana,style:"margin-right:10px; margin-bottom: 20px;" %></td>
+          </tr>
+          <tr>
+            <td style="width:160px">郵便番号</td>
+            <td><%= f.text_field :postal_code,style:"margin-bottom: 20px;" %></td>
+          </tr>
+          <tr>
+            <td style="width:160px">住所</td>
+            <td><%= f.text_field :address,style:"margin-bottom: 20px;" %></td>
+          </tr>
+          <tr>
+            <td style="width:160px">電話番号</td>
+            <td><%= f.text_field :telephone_number,style:"margin-bottom: 20px;" %></td>
+          </tr>
+          <tr>
+            <td style="width:160px">メールアドレス</td>
+            <td><%= f.text_field :email,style:"margin-bottom: 20px;" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <div class="text-right,style:margin-bottom: 20px;">
+                <button class="btn btn-outline-dark" type="submit">編集内容を保存</button>
+              </div>
+            </td>
+          </tr>
+        <% end %>
 
-  <h2>住所</h2>
-  <%= f.text_area :address %>
-
-  <h2>電話番号</h2>
-  <%= f.text_area :telephone_number %>
-
-  <h2>メールアドレス</h2>
-  <%= f.text_area :email %>
-
-  <%= f.submit '編集内容を保存' %>
-
-<% end %>
+      </table>
+    </div>
+  </div>
+</div>

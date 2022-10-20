@@ -1,2 +1,60 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+    <div class='row'>
+        <div class='col-md-10'>
+            <h4 class="ml-5 mt-3", style="background-color: #eee; width:150px; padding-left: 12px;"><b>マイページ</b></h4>
+
+           <table class="table table-bordered">
+
+              <tr>
+                  <td style="width:160px; background-color: #f5f5f5">会員ID</td>
+                  <td><%= @customer.id %></td>
+              </tr>
+  
+              <tr>
+                  <td style="width:160px; background-color: #f5f5f5">氏名</td>
+                  <td><%= @customer.family_name %><%= @customer.first_name %></td>
+              </tr>
+              <tr>
+                  <td style="width:160px; background-color: #f5f5f5">カナ</td>
+                  <td><%= @customer.family_kana %><%= @customer.first_kana %></td>
+              <tr>
+              </tr>
+                  <td style="width:160px; background-color: #f5f5f5">郵便番号</td>
+                  <td><%= @customer.postal_code %></td>
+              </tr>
+              <tr>
+                  <td style="width:160px; background-color: #f5f5f5">住所</td>
+                  <td><%= @customer.address %></td>
+              </tr>
+              <tr>
+                  <td style="width:160px; background-color: #f5f5f5">電話番号</td>
+                  <td><%= @customer.telephone_number %></td>
+              </tr>
+              <tr>
+                  <td style="width:160px; background-color: #f5f5f5">メールアドレス</td>
+                  <td><%= @customer.email %></td>
+              </tr>
+              <tr>
+                <td style="width:160px; background-color: #f5f5f5">会員ステータス</td>
+                <% if @customer.is_active == true %>
+                  <td class="text-success">有効</td>
+                <% else %>
+                  <td class="text-secondary">退会</td>
+                <% end %>
+              </tr>
+            </table>
+        </div>
+
+        <div class='col-md-3'>
+            <table>
+                <tr>
+                    <td>
+                        <span><%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "btn btn-outline-dark ml-2 mt-3 mb-3 px-5" %></span>
+                        <span><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3 px-5" %></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

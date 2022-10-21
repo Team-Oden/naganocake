@@ -2,20 +2,20 @@
   <div class="row">
     <div class='ml-5 col-10 col-sm-10 col-lg-8 col-xl-10'>
       <h4 class='mx-5 my-5', style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom: 40px;"><strong>新規会員登録</strong></h4>
-      
+
         <table>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= render "public/shared/error_messages", resource: resource %>
               <tr>
                 <div class="field">
-                  <td style="width:200px; ><%= f.label :名前 %></td>
+                  <td style="width:200px;" ><%= f.label :名前 %></td>
                   <td style="width:60px;" >(姓)</td>
                   <td><%= f.text_field :family_name, style:"margin-bottom: 10px;", placeholder: "令和", autofocus: true, autocomplete: "family_name" %></td>
                   <td style="width:60px;" >(名)</td>
                   <td><%= f.text_field :first_name, style:"margin-bottom: 10px;", placeholder: "道子", autofocus: true, autocomplete: "first_name" %></td>
                 </div>
               </tr>
-              
+
               <tr>
                 <div class="field">
                   <td><%= f.label :フリガナ %></td>
@@ -25,7 +25,7 @@
                   <td><%= f.text_field :first_kana, style:"margin-bottom: 10px;", placeholder: "ミチコ", autofocus: true, autocomplete: "first_kana" %></td>
                 </div>
               </tr>
-              
+
               <tr>
                 <div class="field">
                   <td><%= f.label :メールアドレス %></td>
@@ -33,7 +33,7 @@
                   <td><%= f.email_field :email, style:"margin-bottom: 10px;", placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></td>
                 </div>
               </tr>
-              
+
               <tr>
                 <div class="field">
                   <td><%= f.label :郵便番号（ハイフンなし） %></td>
@@ -41,7 +41,7 @@
                   <td><%= f.text_field :postal_code, style:"margin-bottom: 10px;", placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %></td>
                 </div>
               </tr>
-              
+
               <tr>
                 <div class="field">
                   <td><%= f.label :住所%></td>
@@ -49,7 +49,7 @@
                   <td colspan = "3"><%= f.text_field :address, style:"margin-bottom: 10px;", placeholder: "東京都渋谷区代々木神園町０−０", size: 60, autofocus: true, autocomplete: "address" %></td>
                 </div>
               </tr>
-              
+
               <tr>
                 <div class="field">
                   <td><%= f.label :電話番号（ハイフンなし）%></td>
@@ -57,7 +57,7 @@
                   <td><%= f.text_field :telephone_number, style:"margin-bottom: 10px;", placeholder: "00000000000", autofocus: true, autocomplete: "telephone_nunber" %></td>
                 </div>
               </tr>
-              
+
               <tr>
                 <div class="field">
                   <td><%= f.label :パスワード（6文字以上） %></td>
@@ -67,7 +67,7 @@
                   <% end %><br />
                   <td><%= f.password_field :password, style:"margin-bottom: 10px;", autocomplete: "new-password" %></td>
                 </div>
-             
+
               <tr>
                 <div class="field">
                   <td><%= f.label :パスワード確認用 %></td>
@@ -75,7 +75,7 @@
                   <td><%= f.password_field :password_confirmation, style:"margin-bottom: 10px;", autocomplete: "new-password" %></td>
                 </div>
               </tr>
-              
+
               <tr>
                 <div class="actions">
                   <td></td>
@@ -85,7 +85,7 @@
               <tr>
           <% end %>
         </table>
- 
+
           <h4 class = "mx-3 my-3", style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;">既に登録済みの方</h4>
           <div class="ml-5">
             <%= render "public/shared/links" %>

@@ -1,34 +1,35 @@
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <%= form_with model: item, url:admin_items_path, local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :image, "商品画像", class: 'col-sm-3' %>
-    <%= f.file_field :image, class: 'col-sm-9 form-control-file item_image', accept: 'image/*' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :name, "商品名", class: 'col-sm-3' %>
-    <%= f.text_field :name, class: 'col-sm-9 form-control item_name' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :introduction, "商品説明", class: 'col-sm-3' %>
-    <%= f.text_area :introduction, class: 'col-sm-9 form-control item_introduction' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :genre_id, "ジャンル", class: 'col-sm-3' %>
-    <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: '選択してください', class: 'col-sm-9 form-control item_genre' , required: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price, "税抜価格", class: 'col-sm-3' %>
-    <%= f.number_field :price, class: 'col-sm-9 form-control tax_out_price' %>円
-  </div>
-  <div class="form-group">
-    <%= f.label :is_active, "販売ステータス" %>
-    <%= f.radio_button :is_active, :true, checked: true %>
-    <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
-    <%= f.radio_button :is_active, :false %>
-    <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
-  </div>
+  <table class="table table-borderless">
+    <tr>
+      <td><%= f.label :image, "商品画像" %></td>
+      <td><%= f.file_field :image, class: 'form-control-file item_image', accept: 'image/*' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :name, "商品名" %></td>
+      <td><%= f.text_field :name, class: 'form-control item_name' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :introduction, "商品説明" %></td>
+      <td><%= f.text_area :introduction, class: 'form-control item_introduction' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :genre_id, "ジャンル" %></td>
+      <td><%= f.collection_select :genre_id, @genres, :id, :name, include_blank: '選択してください', class: 'form-control item_genre' , required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :price, "税抜価格" %></td>
+      <td><%= f.number_field :price, class: 'form-control tax_out_price' %>円</td>
+    </tr>
+    <tr>
+      <td><%= f.label :is_active, "販売ステータス" %></td>
+      <td><%= f.radio_button :is_active, :true, checked: true %><%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>　<%= f.radio_button :is_active, :false %><%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %></td>
+    </tr>
+  </table>
   <div class="form-group">
     <%= f.submit "新規登録", class: 'btn btn-success' %>
   </div>
 <% end %>
+</div>
 
 <!--※レイアウトしてくれる方form_withのパスとsubmitの文字を変えてください-->

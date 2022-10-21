@@ -1,27 +1,47 @@
-<div class='container'>
-  <div class='row'>
-    <div class='mx-auto col-10 col-sm-10 col-lg-8 col-xl-8'>
-      <h4 class="my-3">ログイン</h4>
-      <h6 class="ml-3 my-2">会員の方はこちらからログイン</h6>
+<div class='container px-5 px-sm-0'>
+  <div class="row">
+    <div class='col-xl-12'>
+      <h4 class="ml-5 mt-3", style="background-color: #eee; width:120px; padding-left: 12px; margin-bottom: 40px;"><b>ログイン</b></h4>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <h6 class="ml-5 my-5", style="background-color: #eee; width:250px; padding-left: 12px; margin-bottom: 40px;"><b>会員の方はこちらからログイン</b></h6>
+
+      <div class="d-flex align-items-center justify-content-center">
+        <table class=padding-left: 12px;>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <tr>
+            <div class="field">
+              <td style="width:160px";><%= f.label :メールアドレス %></td>
+              <td style="width:160px";><%= f.email_field :email, size: 50, autofocus: true, autocomplete: "email", style:"margin-right:10px; margin-bottom: 20px;" %></td>
+            </div>
+          </tr>
+
+
+          <tr>
+            <div class="field mt-1">
+              <td style="width:40px";><%= f.label :パスワード %></td>
+              <td><%= f.password_field :password, size: 50, autocomplete: "current-password", style:"margin-right:10px; margin-bottom: 20px;"  %></td>
+            </div>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="border-radius">
+                <%= f.submit "ログイン", class: 'btn btn-outline-dark' %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+
+        <h6 class = "mx-5 my-5", style="background-color: #eee; width:200px; padding-left: 20px; margin-bottom: 20px;"><b>会員登録がお済でない方</b></h6>
+
+        <div class ="text-center">
+          <%= render "public/shared/links" %>
         </div>
 
-        <div class="field mt-1">
-          <%= f.label :パスワード %>
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-
-        <div class="border-radius">
-          <%= f.submit "ログイン", class: 'btn btn-primary btn-sm' %>
-        </div>
-      <% end %>
-
-      <h6>会員登録がお済みでない方</h6>
-      <%= render "public/shared/links" %>
     </div>
   </div>
 </div>

@@ -1,4 +1,26 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='mx-auto col-9 d-flex justify-content-center'>
+      <p style="background-color: #eee; width:600px; height: 150px; padding-left: 12px;" class="d-flex align-items-center">
+        ようこそ、ながのCAKEへ!</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品お観覧はできますが、</br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+</div>
 
-<%= link_to "ログアウト",destroy_customer_session_path, method: :delete %>
+<div class='container'>
+  <div class='row'>
+    <div class='ml-auto col-9 '>
+      <h4 class="ml-5 my-5"><strong>新着商品</strong></h4>
+      <% @items.each.with_index(1) do |item|%>
+        <div><%= image_tag item.get_image, size: "200x100" %></div>
+        <div><%= item.name %></div>
+        <div><span>¥</span><%= item.price.to_s(:delimited) %></div>
+      <% end %>
+      <span class="ml-auto"><%= link_to "全ての商品を見る", items_path  %></span>
+    </div>
+  </div>
+</div>

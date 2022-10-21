@@ -44,11 +44,14 @@
           </tr>
           <tr>
             <td></td>
-            <td></td>
             <td>
-              <div class="text-right,style:margin-bottom: 20px;">
+              <div class="text-right,style:margin-right: 50px;">
                 <button class="btn btn-outline-dark" type="submit">編集内容を保存</button>
               </div>
+            </td>
+            <td></td>
+            <td>
+              <span><%= link_to '退会する', unsubscribe_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3 px-5" %></span>
             </td>
           </tr>
         <% end %>

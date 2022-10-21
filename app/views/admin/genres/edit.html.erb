@@ -1,11 +1,15 @@
-<div class="countainer">
-  <h3>ジャンル一覧・追加</h3>
-  <%= form_with model: @genre, url:admin_genre_path(@genre) do |f| %>
-    <div class="form-inline">
-      <%= f.label :name, 'ジャンル名' %>
-      <%= f.text_field :name, placeholder: "ジャンル名", class: 'form-control' %>
-      <%= f.submit '変更を保存',class: 'btn btn-success' %>
-      <%= link_to '削除する', admin_genre_path(@genre.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn btn-danger"%>
+<div class="container">
+  <div class="row">
+    <div class='ml-5 col-10 col-sm-10 col-lg-8'>
+      <h4 class='mx-5 my-5', style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;"><strong>ジャンル編集</strong></h4>
+      <%= form_with model: @genre, url:admin_genre_path(@genre) do |f| %>
+        <div class="form-inline">
+          <span class="mr-3"><%= f.label :name, 'ジャンル名' %></span>
+          <span class="mr-3"><%= f.text_field :name, placeholder: "ジャンル名", class: 'form-control' %></span>
+          <span class="mr-2"><%= f.submit '変更を保存',class: 'btn btn-success' %></span>
+          <span class="mr-2"><%= link_to '削除する', admin_genre_path(@genre.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%></span>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

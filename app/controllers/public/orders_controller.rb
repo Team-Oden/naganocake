@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def new
+    @oder = Oder.new
   end
 
   def index

@@ -37,6 +37,7 @@
     <div class='mt-5 ml-5 col-sm-10 col-lg-8'>
       <table class='table table-bordered'>
         <thead style="background-color: #eee;">
+          <tr>
             <th>郵便番号</th>
             <th>住所</th>
             <th>宛名</th>
@@ -51,7 +52,7 @@
               <td><%= address.name %></td>
               <td>
                 <%= link_to '編集する', edit_address_path(address.id), class: "btn btn-success" %>
-                <%= link_to '削除する', address_path(address.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn btn-danger"%>
+                <%= link_to '削除する', address_path(address.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%>
               </td>
             </tr>
           <% end %>

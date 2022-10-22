@@ -1,45 +1,75 @@
-<h4>ショッピングカート</h4>
-<table>
-   <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-   </tr>
-     <% total = 0 %>
+<main>
+  <div class='container px-5 px-sm-0'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <h4 class="ml-5 mt-3", style="background-color: #eee; width:240px; padding-left: 12px; margin-bottom:40px;" ><b>ショッピングカート</b></h4>
 
- <% if current_customer.cart_items.present? %>
-    <% @cart_items.each do |cart_item| %>
-    <tr>
-       <td>
-         <%= image_tag cart_item.item.get_image, size:'100x100' %>
-         <%= cart_item.item.name %>
-       </td>
-       <td><%= (cart_item.item.price*1.1).to_i %></td>
-       <td>
-         <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
-           <%= f.number_field :amount, min: 1, max:10, id: "amount_cart"%>
-           <%= f.submit "変更",class: "btn btn-success" %>
-         <% end %>
-       </td>
-       <td>
-         <% subtotal = ((cart_item.amount*cart_item.item.price)*1.1).to_i %>
-         <%= subtotal %>
-       </td>
-       <td>
-         <%= link_to "商品をカートから削除する", cart_item_path(cart_item.id, cart_item), method: :delete,class: "btn btn-danger" %>
-       </td>
-     </tr>
-       <% total += subtotal %>
-     <% end %>
-<% end %>
-   <tr>
-    <th>合計金額</th>
-    <td><%= total %></td>
-    <td><%= link_to "カートを空にする", destroy_all_path, method: :delete,class: "btn btn-danger btn-sm" %></td>
-   </tr>
+        <%= link_to "カートを空にする", destroy_all_path, method: :delete,class: "btn btn-danger btn-sm" %>
 
-<%= link_to '買い物を続ける', items_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3", style:"margin-right:20px;" %>
+        <table class="table table-bordered">
+          <tr>
+            <th style="background-color: #f5f5f5">商品名</th>
+            <th style="background-color: #f5f5f5">単価(税込)</th>
+            <th style="background-color: #f5f5f5">数量</th>
+            <th style="background-color: #f5f5f5">小計</th>
+            <th style="background-color: #f5f5f5"></th>
+          </tr>
+       <% total = 0 %>
 
-<%= link_to '情報入力に進む', new_order_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3", style:"margin-right:20px;" %>
+        <% if current_customer.cart_items.present? %>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td>
+              <%= image_tag cart_item.item.get_image, size:'100x100' %>
+              <%= cart_item.item.name %>
+            </td>
+            <td><%= (cart_item.item.price*1.1).to_i %></td>
+            <td>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
+                <%= f.number_field :amount, min: 1, max:10, id: "amount_cart"%>
+                <%= f.submit "変更",class: "btn btn-success" %>
+              <% end %>
+             </td>
+             <td>
+              <% subtotal = ((cart_item.amount*cart_item.item.price)*1.1).to_i %>
+              <%= subtotal %>
+           </td>
+            <td>
+              <%= link_to "削除する", cart_item_path(cart_item.id, cart_item), method: :delete,class: "btn btn-danger" %>
+            </td>
+          </tr>
+            <% total += subtotal %>
+          <% end %>
+        <% end %>
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class='container'>
+    <div class="float-right">
+      <div class='col-md-10'>
+        <div class='row'>
+
+          <table class="table table-bordered">
+            <tr>
+              <td style="width:150px; height:50px; background-color: #f5f5f5">合計金額</td>
+              <td style="width:120px;"><%= total %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class='container'>
+    <%= link_to '買い物を続ける', items_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3", style:"margin-right:20px;" %>
+  </div>
+
+  <div class=text-center>
+    <%= link_to '情報入力に進む', new_order_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3", style:"margin-right:20px;" %>
+  </div>
+
+</main>

@@ -6,9 +6,9 @@
       <h6 class="ml-5 my-5", style="background-color: #eee; width:250px; padding-left: 12px; margin-bottom: 40px;"><b>会員の方はこちらからログイン</b></h6>
 
       <div class="d-flex align-items-center justify-content-center">
-        <table class=padding-left: 12px;>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <table class=padding-left: 12px;>
 
           <tr>
             <div class="field">
@@ -27,13 +27,14 @@
           <tr>
             <td></td>
             <td>
-              <div class="border-radius">
+              <div class="actions">
                 <%= f.submit "ログイン", class: 'btn btn-outline-dark' %>
               </div>
             </td>
           </tr>
-        <% end %>
+
         </table>
+        <% end %>
       </div>
 
         <h6 class = "mx-5 my-5", style="background-color: #eee; width:200px; padding-left: 20px; margin-bottom: 20px;"><b>会員登録がお済でない方</b></h6>

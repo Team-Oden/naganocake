@@ -4,9 +4,11 @@
       <div class='col-md-12'>
         <h4 class="ml-5 mt-3", style="background-color: #eee; width:240px; padding-left: 12px; margin-bottom:40px;" ><b>ショッピングカート</b></h4>
 
-        <%= link_to "カートを空にする", destroy_all_path, method: :delete,class: "btn btn-danger btn-sm" %>
+          <div class=text-right>
+            <%= link_to "カートを空にする", destroy_all_path, method: :delete,class: "btn btn-danger btn-sm" %>
+          </div>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered", style="margin:20px;">
           <tr>
             <th style="background-color: #f5f5f5">商品名</th>
             <th style="background-color: #f5f5f5">単価(税込)</th>
@@ -63,7 +65,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class='container'>
     <%= link_to '買い物を続ける', items_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3", style:"margin-right:20px;" %>
   </div>

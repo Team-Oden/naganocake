@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-md-10'>
       <h4 class="ml-5 mt-3", style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom: 40px;"><b>会員情報編集</b></b></h4>
-      <%= form_with model: @customer, url: infomation_path, method: :patch do |f| %>
+
       <table class=padding-left: 12px;>
 
         <% if @customer.errors.any? %>
@@ -13,6 +13,8 @@
             <% end %>
           </ul>
         <% end %>
+
+        <%= form_with model: @customer, url: infomation_path, method: :patch do |f| %>
 
           <tr>
             <td style="width:160px; ">氏名</td>
@@ -43,8 +45,8 @@
           <tr>
             <td></td>
             <td>
-              <div class="actions">
-                <%= f.submit "編集内容を保存" ,class: 'btn btn-outline-dark'%>
+              <div class="text-right,style:margin-right: 50px;">
+                <button class="btn btn-outline-dark" type="submit">編集内容を保存</button>
               </div>
             </td>
             <td></td>
@@ -52,9 +54,9 @@
               <span><%= link_to '退会する', unsubscribe_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3 px-5" %></span>
             </td>
           </tr>
+        <% end %>
 
       </table>
-      <% end %>
     </div>
   </div>
 </div>

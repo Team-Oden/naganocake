@@ -2,7 +2,8 @@
   <div class="row">
     <div class='ml-5 col-10 col-sm-10 col-lg-8 col-xl-10'>
       <h4 class='mx-5 my-5', style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;"><strong>ジャンル編集</strong></h4>
-      <%= form_with model: @genre, url:admin_genre_path(@genre) do |f| %>
+      <%= render "admin/shared/error_messages", resource: @genre %>
+      <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
         <div class="form-inline">
           <span class="mr-3"><%= f.label :name, 'ジャンル名' %></span>
           <span class="mr-3"><%= f.text_field :name, placeholder: "ジャンル名", class: 'form-control' %></span>

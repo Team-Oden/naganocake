@@ -22,8 +22,12 @@ class Admin::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
-    @genre.update(genre_params)
-    redirect_to admin_genre_path, notice: "変更が保存されました。"
+    if @genre.update(genre_params)
+    redirect_to admin_genres_path, notice: "変更が保存されました。"
+    else
+      render 'edit'
+    end
+
   end
 
   def destroy

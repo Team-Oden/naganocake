@@ -17,6 +17,12 @@ class Customer < ApplicationRecord
   validates :address,presence:true
   validates :telephone_number,presence:true
 
-
+  def full_name
+    family_name + first_name
+  end
  
+  def address_display
+    "〒" + postal_code + "　" + address
+  end
+
 end

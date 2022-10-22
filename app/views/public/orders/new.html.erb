@@ -5,7 +5,7 @@
         <h4>注文情報入力</h4>
         <h4><strong>支払い情報</strong></h4>
         <div>
-          <%= f.radio_button :payment_method, :credit_card %>
+          <%= f.radio_button :payment_method, :credit_card, checked: true%>
           <%= f.label :payment_method, "クレジットカード" %>
         </div>
         <div>
@@ -16,8 +16,8 @@
         <h4><strong>お届け先</strong></h4>
   <!--顧客情報の住所使用-->
         <div>
-          <%= f.radio_button :address_number, 1 %>
-          <%= f.label :address_number_1, "ご自身の住所" %>
+          <%= f.radio_button :address_number, 1, checked: true%>
+          <%= f.label :address_number, "ご自身の住所" %>
         </div>
         <div>
           <%= current_customer.address_display %><br>
@@ -27,13 +27,13 @@
   <!--登録済みお届け先の住所使用-->
         <div>
           <%= f.radio_button :address_number, 2 %>
-          <%= f.label :address_number_2, "登録先の住所から選択" %>
-          <%= f.collection_select :registered, current_customer.addresses.all, :id, :address_name_display %>
+          <%= f.label :address_number, "登録先の住所から選択" %>
+          <%= f.collection_select :registered, current_customer.addresses.all, :id, :address_name_display,include_blank: '選択してください'  %>
         </div>
       
         <div>
           <%= f.radio_button :address_number, 3 %>
-          <%= f.label :address_number_3, "新しいお届け先" %>
+          <%= f.label :address_number, "新しいお届け先" %>
           
           <table>
             <tr>

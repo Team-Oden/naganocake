@@ -1,2 +1,59 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h4>注文履歴一覧</h4>
+
+<p><strong>注文情報</strong></p>
+
+<table>
+  <tr>
+    <td>注文日</td>
+    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <td>配送先</td>
+    <td>〒<%= @order.postal_code %><br>
+        <%= @order.address %><br>
+        <%= @order.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>支払い方法</td>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+  <tr>
+    <td>ステータス</td>
+    <td><%= @order.status_i18n %></td>
+  </tr>
+</table>
+
+<p><strong>請求情報</strong></p>
+<table>
+  <tr>
+    <td>商品合計</td>
+    <td><td><%= @order.total_payment.to_s(:delimited) %></td></td>
+  </tr>
+  <tr>
+    <td>配送料</td>
+    <td><%= @order.shipping_cost.to_s %></td>
+  </tr>
+  <tr>
+    <td>ご請求額</td>
+    <td><%= @order.request_amount.to_s(:delimited) %></td>
+  </tr>
+</table>
+
+<p><strong>注文内容</strong></p>
+<table>
+  <tr>
+    <td>商品</td>
+    <td>単価（税込）</td>
+    <td>個数</td>
+    <td>小計</td>
+  </tr>
+  <tr>
+    <% @oder_ditails.each do |oder_ditail| %>
+      <td><%= oder_ditail.items.neme %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    <% end %>
+  </tr>
+</table>

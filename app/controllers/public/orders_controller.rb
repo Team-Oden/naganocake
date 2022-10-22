@@ -36,6 +36,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @oder_ditails = @order.order_details.all
   end
 
   def create

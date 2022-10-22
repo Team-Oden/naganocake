@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_10_18_024936) do
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_kana", null: false
-    t.string "family_kana", null: false
+    t.string "first_kana", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2022_10_18_024936) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "items_id", null: false
+    t.integer "item_id", null: false
     t.integer "order_id", null: false
     t.integer "price", null: false
     t.integer "amount", null: false

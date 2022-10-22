@@ -39,21 +39,25 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    cart_items = current_customer.cart_items.all
-    total = cart_items.inject(0) { |sum, item| sum + item.sum_price }
+    @cart_items = current_customer.cart_items.all
+    total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
     @request_amount = total + 800
     @order = current_customer.orders.new(order_params)
     if @order.save
-      cart_items.each do |cart_item|
+      @cart_items.each do |cart_item|
         order_detail = OrderDetail.new
-        order_detail.items_id = cart_item.item_id
+        order_detail.item_id = cart_item.item_id
         order_detail.order_id = @order.id
         order_detail.amount = cart_item.amount
         order_detail.price = cart_item.item.price
         order_detail.save
+        # pp order_detail
+        # order_detail.errors.full_messages.each do |msg|
+          # pp msg
+        # end
       end
       redirect_to complete_path
-      cart_items.destroy_all
+      @cart_items.destroy_all
     
     else
       @order = Order.new(order_params)

@@ -14,14 +14,14 @@
           <thead style="background-color: #eee;">
             <th>ジャンル</th>
             <th colspan=2></th>
-            <tbody>
-              <% @genres.each do |genre| %>
+            <% @genres.each do |genre| %>
+              <tbody>
                 <tr>
                   <td><%= genre.name %></td>
                   <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
                 </tr>
-              <% end %>
-            </tbody>
+              </tbody>
+            <% end %>
           </thead>
         </table>
       </div>

@@ -2,8 +2,8 @@
   <div class="row">
     <div class='ml-5 col-10 col-sm-10 col-lg-8 col-xl-10'>
       <h4 class='mx-5 my-5', style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom: 40px;"><strong>配送先編集</strong></h4>
-      <table>
-        <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
+      <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
+        <table>
           <tr>
             <div class="field">
               <td><%= f.label :郵便番号ハイフンなし %></td>
@@ -26,8 +26,8 @@
               <td><%= f.submit '変更を保存',class: 'btn btn-success' %></td>
             </div>
           </tr>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

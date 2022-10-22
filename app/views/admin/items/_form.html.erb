@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <td><%= f.label :genre_id, "ジャンル" %></td>
-      <td><%= f.collection_select :genre_id, @genres, :id, :name, include_blank: '選択してください', class: 'form-control item_genre' , required: true %></td>
+      <td><%= f.collection_select :genre_id, genres, :id, :name, include_blank: '選択してください', class: 'form-control item_genre' , required: true %></td>
     </tr>
     <tr>
       <td><%= f.label :price, "税抜価格" %></td>

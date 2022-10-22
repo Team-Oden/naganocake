@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :current_customer, only: [:edit, :updata]
+
   def show
     @customer = current_customer
   end

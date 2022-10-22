@@ -33,10 +33,7 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    # 下はヘッダーできてから消す
-    customer_session_path
-    # ----ここまで
-    # root_path
+    root_path
   end
   
   def reject_customer

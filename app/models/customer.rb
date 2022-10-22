@@ -21,11 +21,8 @@ class Customer < ApplicationRecord
     family_name + first_name
   end
  
-  def address_displey
+  def address_display
     "〒" + postal_code + "　" + address
   end
-  
-  def address_name_displey
-    "〒" + postal_code + "　" + address + "　" + full_name
-  end  
+
 end

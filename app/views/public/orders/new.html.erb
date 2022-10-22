@@ -27,20 +27,37 @@
         <%= hidden_field :address, :values => 
           @customer_address
         %>
-        <%= @customer.address_displey %>
-        <%= @customer.full_name%>
+        <div>
+          <%= current_customer.address_display %><br>
+          <%= current_customer.full_name%>
+        </div>
       </div>
     
 <!--登録済みお届け先の住所使用-->
       <div>
         <%= f.radio_button :address_number, 2 %>
         <%= f.label :address_number_2, "登録先の住所から選択" %>
-        <%= f.collection_select(:registered, current_customer.addresses.all, :id, :address) %>
+        <%= f.collection_select(:registered, current_customer.addresses.all, :id, :address_name_display) %>
       </div>
     
       <div>
         <%= f.radio_button :address_number, 3 %>
         <%= f.label :address_number_3, "新しいお届け先" %>
+        
+        <table>
+          <tr>
+            <td><%= f.label :郵便番号（ハイフンなし） %></td>
+            <td><%= f.text_field :postal_code%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :住所 %></td>
+            <td><%= f.text_field :address%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :宛名 %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+        </table>
         
       </div>
       

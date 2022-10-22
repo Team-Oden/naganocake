@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-md-10'>
       <h4 class="ml-5 mt-3", style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom: 40px;"><b>会員情報編集</b></b></h4>
-
+      <%= form_with model: @customer, url: infomation_path, method: :patch do |f| %>
       <table class=padding-left: 12px;>
 
         <% if @customer.errors.any? %>
@@ -14,7 +14,6 @@
           </ul>
         <% end %>
 
-        <%= form_with model: @customer, url: infomation_path, method: :patch do |f| %>
 
           <tr>
             <td style="width:160px; ">氏名</td>

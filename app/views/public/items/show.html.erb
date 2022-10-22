@@ -1,12 +1,42 @@
-<h1>商品詳細</h1>
-
-<div>
-  <p><%= image_tag @item.get_image, size:'200x200' %></p>
-  <p><%= @item.name %></p>
-  <p><%= @item.introduction %></p>
-  <p>￥<%= @item.add_tax_price.to_s(:delimited) %>（税込み）</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <h5 class="ml-5 mt-3", style="background-color: #eee; width:105px; padding-left: 12px;"></h5>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mt-5 text-center">
+      <%= image_tag @item.get_image, size: '350x250' %>
+    </div>
+    <div class="col-md-7 mt-5">
+      <table class="table">
+        <tr class="table table-borderless">
+          <td>
+            <h3><b><%= @item.name %></b></h3>
+          </td>
+        </tr>
+        <tr class="table table-borderless">
+          <td>
+            <h5><%= @item.introduction %></h5>
+          </td>
+        </tr>
+        <tr class="table table-borderless">
+          <td>
+            <h4><b>￥<%= @item.add_tax_price.to_s(:delimited) %>（税込み）</b></h4>
+          </td>
+        </tr>
+      </table>
+      <div class=text-center>
+          <%= form_with model: @cart_item,url: cart_items_path, method: :post, local: true do |f| %>
+           <%= f.label :amount, "個数選択" %>
+            <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+           <%= f.hidden_field :item_id, :value => @item.id %>
+           <%= f.submit "カートに入れる" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
 </div>
 
+<<<<<<< HEAD
 
   <%= form_with model: @cart_item,url: cart_items_path, method: :post, local: true do |f| %>
    <%= f.label :amount, "個数選択" %>
@@ -14,3 +44,5 @@
    <%= f.hidden_field :item_id, :value => @item.id %>
    <%= f.submit "カートに入れる" %>
   <% end %>
+=======
+>>>>>>> origin/develop

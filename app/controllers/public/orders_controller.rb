@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "3"
       address_new = current_customer.addresses.new(address_params)
     end
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
     @request_amount = @total + 800
     # 合計金額を出す処理です sum_price はモデルで定義したメソッドです

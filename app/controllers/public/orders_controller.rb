@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
   def show
     @orders = current_customer.orders
     @order = current_customer.orders.find(params[:id])
-    @cart_items = current_customer.cart_items
+    @total = 0
   end
 
   def create

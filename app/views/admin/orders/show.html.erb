@@ -44,8 +44,9 @@
       <td><%= order_detail.item.add_tax_price %></td>
       <td><%= order_detail.amount %></td>
       <td><%= order_detail.item.add_tax_price * order_detail.amount %></td>
-      <%= form_with model: order_detail, url: admin_order_order_detail_path([@order, order_detail]), method: :patch do |f| %>
-        <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"),k]}, class: "status" %>　<%= f.submit "更新", class: "btn btn-success" %></td>
+      <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
+        <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"),k]}, class: "status" %>
+        <%= f.hidden_field :order_detail_id, value: order_detail.id %>　　<%= f.submit "更新", class: "btn btn-success" %></td>
       <% end %>
     </tr>
     <% end %>

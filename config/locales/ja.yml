@@ -16,3 +16,7 @@
           production_pending: "製作待ち"
           in_production: "製作中"
           production_complete: "製作完了"
+    activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"

@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.full_name
       @order.address = current_customer.address
       @order.postal_code = current_customer.postal_code
-      
+
     elsif params[:order][:address_number] == "2"
       if Address.exists?(name: params[:order][:registered])
         @order.name = Address.find(params[:order][:registered]).name
@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
       else
         render :new
       end
-      
+
     elsif params[:order][:address_number] == "3"
       address_new = current_customer.addresses.new(address_params)
     end
@@ -33,9 +33,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order = current_customer.orders
   end
 
   def show
+    @orders = current_customer.orders
+    @order = current_customer.orders.find(params[:id])
+    @cart_items = current_customer.cart_items
   end
 
   def create
@@ -56,9 +60,10 @@ class Public::OrdersController < ApplicationController
           # pp msg
         # end
       end
+      cart_items.destroy_all
       redirect_to complete_path
-      @cart_items.destroy_all
-    
+
+
     else
       @order = Order.new(order_params)
       render :new
@@ -67,11 +72,11 @@ class Public::OrdersController < ApplicationController
 
 
 private
-  
+
   def order_params
     params.require(:order).permit(:name, :address, :postal_code, :price, :payment_method,:total_payment)
   end
-  
+
   def address_params
     params.require(:order).permit(:name, :address, :postal_code)
   end

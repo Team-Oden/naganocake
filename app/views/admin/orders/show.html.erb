@@ -26,3 +26,43 @@
   </tr>
 </table>
 <% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税金)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製品ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_details.each do |order_detail| %>
+    <tr>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.item.add_tax_price %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= order_detail.item.add_tax_price * order_detail.amount %></td>
+      <%= form_with model: order_detail, url: admin_order_order_detail_path([@order, order_detail]), method: :patch do |f| %>
+        <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"),k]}, class: "status" %>　<%= f.submit "更新", class: "btn btn-success" %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+  <tr>
+    <td>商品合計</td>
+    <td><%= @order.total_payment %>円</td>
+  </tr>
+  <tr>
+    <td>送料</td>
+    <td><%= @order.shipping_cost %>円</td>
+  </tr>
+  <tr>
+    <td>請求金額合計</td>
+    <td><%= @order.total_payment + @order.shipping_cost %>円</td>
+  </tr>
+</table>

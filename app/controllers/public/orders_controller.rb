@@ -61,7 +61,7 @@ class Public::OrdersController < ApplicationController
           # pp msg
         # end
       end
-      cart_items.destroy_all
+      @cart_items.destroy_all
       redirect_to complete_path
 
 

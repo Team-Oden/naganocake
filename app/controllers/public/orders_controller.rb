@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-
   def comfirm
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
@@ -9,7 +8,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
 
     elsif params[:order][:address_number] == "2"
-      if Address.exists?(name: params[:order][:registered])
+      if Address.exists?(params[:order][:registered])
         @order.name = Address.find(params[:order][:registered]).name
         @order.address = Address.find(params[:order][:registered]).address
         @order.postal_code = Address.find(params[:order][:registered]).postal_code
@@ -41,6 +40,7 @@ class Public::OrdersController < ApplicationController
   def show
     @orders = current_customer.orders
     @order = current_customer.orders.find(params[:id])
+    @cart_items = current_customer.cart_items
   end
 
   def create
@@ -54,7 +54,7 @@ class Public::OrdersController < ApplicationController
         order_detail.item_id = cart_item.item_id
         order_detail.order_id = @order.id
         order_detail.amount = cart_item.amount
-        order_detail.price = cart_item.item.price
+        order_detail.price = cart_item.item.add_tax_price
         order_detail.save
         # pp order_detail
         # order_detail.errors.full_messages.each do |msg|

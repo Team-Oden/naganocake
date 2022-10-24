@@ -2,39 +2,40 @@
   <div class='row'>
     <%= form_with model: @order, url:comfirm_path, method: :post do |f|%>
       <div class='col-12 '>
-        <h4>注文情報入力</h4>
-        <h4><strong>支払い情報</strong></h4>
-        <div>
+        <h4 style="background-color: #eee; width:180px;  text-align: center; margin: 20px 60px;">注文情報入力</h4>
+        <h4><strong>支払方法</strong></h4>
+        <div style="margin-left: 50px;">
           <%= f.radio_button :payment_method, :credit_card, checked: true%>
           <%= f.label :payment_method, "クレジットカード" %>
         </div>
-        <div>
+        <div style="margin-left: 50px; margin-bottom: 20px;">
           <%= f.radio_button :payment_method, :transfer %>
-          <%= f.label :payment_method, "銀行振込" %></div>
+          <%= f.label :payment_method, "銀行振込" %>
         </div>
-      
+
         <h4><strong>お届け先</strong></h4>
   <!--顧客情報の住所使用-->
-        <div>
+        <div style="margin-left: 50px;">
           <%= f.radio_button :address_number, 1, checked: true%>
           <%= f.label :address_number, "ご自身の住所" %>
         </div>
-        <div>
+        <div style="margin-left: 80px;">
           <%= current_customer.address_display %><br>
           <%= current_customer.full_name%>
         </div>
         
   <!--登録済みお届け先の住所使用-->
-        <div>
+        <div style="margin-left: 50px;">
           <%= f.radio_button :address_number, 2 %>
           <%= f.label :address_number, "登録先の住所から選択" %>
           <%= f.collection_select :registered, current_customer.addresses.all, :id, :address_name_display,include_blank: '選択してください'  %>
         </div>
       
-        <div>
+        <div style="margin-left: 50px;">
           <%= f.radio_button :address_number, 3 %>
           <%= f.label :address_number, "新しいお届け先" %>
-          
+        </div>
+        <div style="margin-left: 80px;">
           <table>
             <tr>
               <td><%= f.label :郵便番号（ハイフンなし） %></td>
@@ -49,10 +50,10 @@
               <td><%= f.text_field :name %></td>
             </tr>
           </table>
-          
         </div>
-        <div>
-        <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+        
+        <div style="margin-top: 10px;">
+          <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
         </div>
       </div>
     <% end %>

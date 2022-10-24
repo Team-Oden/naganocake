@@ -28,7 +28,7 @@
         <div style="margin-left: 50px;">
           <%= f.radio_button :address_number, 2 %>
           <%= f.label :address_number, "登録先の住所から選択" %>
-          <%= f.collection_select :registered, current_customer.addresses.all, :id, :address_name_display, include_blank: '選択してください'  %>
+          <%= f.collection_select :registered, current_customer.addresses.all, :id, :address_name_display, include_blank: '選択してください' %>
         </div>
       
         <div style="margin-left: 50px;">
@@ -39,20 +39,20 @@
           <table>
             <tr>
               <td><%= f.label :郵便番号（ハイフンなし） %></td>
-              <td><%= f.text_field :postal_code%></td>
+              <td><%= f.text_field :postal_code, style:"margin-bottom: 10px;", placeholder: "0000000" %></td>
             </tr>
             <tr>
               <td><%= f.label :住所 %></td>
-              <td><%= f.text_field :address%></td>
+              <td><%= f.text_field :address, style:"margin-bottom: 10px;", placeholder: "東京都渋谷区代々木神園町０−０", size: 60 %></td>
             </tr>
             <tr>
               <td><%= f.label :宛名 %></td>
-              <td><%= f.text_field :name %></td>
+              <td><%= f.text_field :name, style:"margin-bottom: 10px;", placeholder: "令和道子" %></td>
             </tr>
           </table>
         </div>
         
-        <div style="margin-top: 10px;">
+        <div style="margin-top: 10px; text-align: center;">
           <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
         </div>
       </div>

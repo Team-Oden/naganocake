@@ -10,6 +10,7 @@ class Public::CartItemsController < ApplicationController
         #もし元々カート内に「同じ商品」がある場合、「数量を追加」更新・保存する
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
                                       #元々カート内にあるもの「item_id」
+
                                       #今追加した　　　　　　　params[:cart_item][:item_id])
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i

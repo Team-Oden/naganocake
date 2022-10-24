@@ -1,18 +1,28 @@
 <div class="container">
   <h3 style="margin-bottom: 50px; margin-top: 50px;">商品一覧(全<%= @items.count =%>件)</h3>
   <div class="row">
+
+
     <% @items.each do |item| %>
       <div class="col-lg-3">
         <div class="d-flex flex-column">
-          <%= link_to  item_path(item.id) do %>
-            <%= image_tag item.get_image, size:'260x200' %>
+          <% if item.is_active == true %>
+            <%= link_to  item_path(item.id) do %>
+              <%= image_tag item.get_image, size:'260x200' %>
+            <% end %>
+          <% else %>
+            <img src='/assets/sold-out.png' width="260" height="200">
           <% end %>
-
-          <h5 style="margin-bottom: 20px; margin-top: 20px;"><%= item.name %></h5>
-
-          <h5 style="margin-bottom: 40px;">￥<%= item.price %></h5>
+            <h5 style="margin-bottom: 20px; margin-top: 20px;"><%= item.name %></h5>
+            <h5 style="margin-bottom: 40px;">￥<%= item.price %></h5>
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="text-center">
+    <%= paginate @items %>
   </div>
 </div>

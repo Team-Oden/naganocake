@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
   end
 
   def create
@@ -40,10 +40,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all #カート内全て削除
-    @cart_items = current_customer.cart_items.all
     cart_items = CartItem.all
     cart_items.destroy_all
-    render 'index'
+    redirect_to cart_items_path
   end
 
   private

@@ -76,7 +76,7 @@
         </tr>
         <tr>
           <td><b>請求金額合計</td>
-          <td><b><%= @order.total_payment + @order.shipping_cost %>円</b></td>
+          <td><b><%= @order.total_payment - @order.shipping_cost %>円</b></td>
         </tr>
       </table>
     </div>

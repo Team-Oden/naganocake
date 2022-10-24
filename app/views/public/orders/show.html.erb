@@ -33,7 +33,7 @@
         <table class="table table-bordered", style="margin:20px;">
           <tr>
             <td style="background-color: #f5f5f5">商品合計</td>
-            <td><%= @order.total_payment.to_s(:delimited) %></td>
+            <td><%= (@order.total_payment - @order.shipping_cost) %></td>
           </tr>
           <tr>
             <td style="background-color: #f5f5f5">配送料</td>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td style="background-color: #f5f5f5"><b>ご請求額</b></td>
-            <td><%= (@order.total_payment + @order.shipping_cost).to_s(:delimited) %></td>
+            <td><%= @order.total_payment.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>
@@ -60,10 +60,10 @@
 
           <tr>
             <td>
-                <%= order_detail.item.name %>
+              <%= order_detail.item.name %>
             </td>
             <td>
-              <%= order_detail.item.price %>
+              <%= order_detail.price %>
             </td>
             <td>
               <%= order_detail.amount %>

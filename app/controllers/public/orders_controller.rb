@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def comfirm
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
@@ -39,7 +41,6 @@ class Public::OrdersController < ApplicationController
   def show
     @orders = current_customer.orders
     @order = current_customer.orders.find(params[:id])
-    @cart_items = current_customer.cart_items
   end
 
   def create

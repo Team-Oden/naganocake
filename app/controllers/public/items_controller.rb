@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
   before_action :current_customer, only: [:show]
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(8)
   end
 
   def show

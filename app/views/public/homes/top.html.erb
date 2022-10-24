@@ -5,7 +5,7 @@
         <p style="background-image: url(assets/poundcake.jpg); width:640px; height: 420px; margin-top: 50px;" class="d-flex align-items-center text-light" >
           ようこそ、ながのCAKEへ!</br>
           このサイトは、ケーキ販売のECサイトになります。</br>
-          会員でない方も商品お観覧はできますが、</br>
+          会員でない方も商品の閲覧はできますが、</br>
           購入には会員登録が必要になります。
         </p>
       </div>
@@ -19,10 +19,14 @@
     <% @items.each do |item| %>
       <div class="col-lg-3">
         <div class="d-flex flex-column">
-          <%= image_tag item.get_image, size:'260x200' %>
-
+        <% if item.is_active == true %>
+          <%= link_to  item_path(item.id) do %>
+            <%= image_tag item.get_image, size:'260x200' %>
+          <% end %>
+        <% else %>
+          <img src='/assets/sold-out.png' width="260" height="200">
+        <% end %>
           <h5 style="margin-bottom: 20px; margin-top: 20px;"><%= item.name %></h5>
-
           <h5 style="margin-bottom: 40px;">￥<%= item.price %></h5>
         </div>
       </div>

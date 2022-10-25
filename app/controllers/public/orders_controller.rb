@@ -9,11 +9,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
 
     elsif params[:order][:address_number] == "2"
-<<<<<<<<< saved version
-
-=========
-      if Address.exists?(name: params[:order][:registered])
->>>>>>>>> local version
+      if Address.exists?(params[:order][:registered])
         @order.name = Address.find(params[:order][:registered]).name
         @order.address = Address.find(params[:order][:registered]).address
         @order.postal_code = Address.find(params[:order][:registered]).postal_code

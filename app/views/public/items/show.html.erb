@@ -29,7 +29,7 @@
         <% if @item.is_active == true %>  <!--商品販売中の場合カートに入れる機能を表示-->
           <%= form_with model: @cart_item,url: cart_items_path, method: :post, local: true do |f| %>
            <%= f.label :amount, "個数選択" %>
-            <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+            <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10],include_blank: '--' %>
            <%= f.hidden_field :item_id, :value => @item.id %>
              <!-- #第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定
                   #cartitem controllerの cart_items.find_by(item_id:に送ることができる-->

@@ -1,20 +1,20 @@
-  <div class='container'>
-    <div class=''>
-      <h4 class="ml-5 mt-3", style="background-color: #eee; width:170px; padding-left: 12px; margin-bottom:40px;" ><b>注文履歴詳細</b></h4>
+<div class="container auto">
+  <h4 class = "ml-5 mt-3" style = "background-color:#eee; width:170px; padding-left: 12px; margin-bottom:40px;"><b>注文履歴詳細</b></h4>
+    <div class='row'>
+      <div class='col-8 mr-0'>
 
-      <div class='col-md-6'>
         <h6><b>注文情報</b></h6>
         <table class="table table-bordered", style="margin:20px;">
           <tr>
-            <td style="background-color: #f5f5f5">注文日</td>
+            <td style="width:160px; background-color: #f5f5f5">注文日</td>
             <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
             <td style="background-color: #f5f5f5">配送先</td>
             <td>
-              〒<%= @order.postal_code %>
-              <%= @order.address %>
-              <%= @order.name %>
+              〒<%= @order.postal_code %><br>
+              <%= @order.address %><br>
+              <%= @order.name %><br>
             </td>
           </tr>
           <tr>
@@ -28,11 +28,11 @@
         </table>
       </div>
 
-      <div class='col-md-4'>
+      <div class='col-3'>
         <h6><b>請求情報</b></h6>
         <table class="table table-bordered", style="margin:20px;">
           <tr>
-            <td style="background-color: #f5f5f5">商品合計</td>
+            <td style="width:140px; background-color: #f5f5f5">商品合計</td>
             <td><%= (@order.total_payment - @order.shipping_cost) %></td>
           </tr>
           <tr>
@@ -46,14 +46,14 @@
         </table>
       </div>
 
-      <div class='col-md-8'>
+      <div class='col-md-9'>
         <h6><b>注文内容</b></h6>
         <table class="table table-bordered", style="margin:20px;">
           <tr>
-            <td style="background-color: #f5f5f5">商品</td>
-            <td style="background-color: #f5f5f5">単価（税込）</td>
+            <td style="width:450px; background-color: #f5f5f5">商品</td>
+            <td style="width:150px; background-color: #f5f5f5">単価（税込）</td>
             <td style="background-color: #f5f5f5">個数</td>
-            <td style="background-color: #f5f5f5">小計</td>
+            <td style="width:150px; background-color: #f5f5f5">小計</td>
           </tr>
 
           <% @order.order_details.each do |order_detail| %>

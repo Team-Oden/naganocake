@@ -12,4 +12,9 @@
   <div class="row">
     <%= render 'index', items:@items %>
   </div>
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <%= paginate @items %>
+    </div>
+  </div>
 </div>

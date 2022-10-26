@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     get 'customers/infomation/edit'=>'customers#edit',as: 'edit_infomation'
     patch 'customers/infomation'=>'customers#update',as: 'infomation'
 
-    resources :items, only:[:index, :show]
+    resources :items, only:[:index, :show]do
+      get '/genre_items' => 'items#genre_items'
+    end
 
     root :to =>"homes#top"
     get '/about'=>'homes#about',as: 'about'

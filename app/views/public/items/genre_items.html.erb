@@ -1,3 +1,4 @@
+
 <div class='container mt-5 h-75'>
   <div class='row h-100'>
     <div class='col-md-2'>
@@ -8,11 +9,11 @@
       <div>
         <div class = "new-arrival">
           <div style="display:flex; flex-wrap:wrap;">
-            <h3><strong>商品一覧</strong></h3>
-            <div class="mt-2"><strong>（全<%= @items.count%>件）</strong></div>
+            <h3><strong><%= @genre.name %>一覧</strong></h3>
+            <div class="mt-2"><strong>（全<%= @genre_items.count%>件）</strong></div>
           </div>
           <div class = "new-arrival-contents" style="display:flex; flex-wrap:wrap;">
-            <% @items.each do |item| %>
+            <% @genre_items.each do |item| %>
             <div class="col-lg-3">
               <div class="d-flex flex-column">
                 <% if item.is_active == true %>
@@ -20,19 +21,21 @@
                     <%= image_tag item.get_image, size:'200x160' %>
                   <% end %>
                 <% else %>
-                  <img src='/assets/sold-out.png' width="200" height="160">
+                  <img src='/assets/sold-out.png' width="260" height="200">
                 <% end %>
                   <h5 style="margin-bottom: 20px; margin-top: 20px;"><%= item.name %></h5>
                   <h5 style="margin-bottom: 40px;">￥<%= item.price %></h5>
               </div>
             </div>
           <% end %>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <%= paginate @items %>
+          </div>
         </div>
       </div>
     </div>
+
+    <div style="margin:0 auto;">
+      <%= paginate @genre_items%>
+    </div>
+
   </div>
 </div>

@@ -35,6 +35,7 @@
 ### rails-i18n
 
 # ER図
+![Kチームおでん drawio](https://user-images.githubusercontent.com/112250615/197967847-4f65146a-30aa-4d36-8797-04a2c0256c65.png)
 
 
 # 主な機能

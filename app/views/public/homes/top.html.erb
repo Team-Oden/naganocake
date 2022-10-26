@@ -1,2 +1,41 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='mx-auto col-9 d-flex justify-content-center'>
+      <div style="text-align: center;">
+        <p style="background-image: url(assets/poundcake.jpg); width:640px; height: 420px; margin-top: 50px;" class="d-flex align-items-center text-light" >
+          ようこそ、ながのCAKEへ!</br>
+          このサイトは、ケーキ販売のECサイトになります。</br>
+          会員でない方も商品の閲覧はできますが、</br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h3 style="margin-bottom: 30px; margin-top: 50px;">新着商品</h3>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-lg-3">
+        <div class="d-flex flex-column">
+        <% if item.is_active == true %>
+          <%= link_to  item_path(item.id) do %>
+            <%= image_tag item.get_image, size:'260x200' %>
+          <% end %>
+        <% else %>
+          <img src='/assets/sold-out.png' width="260" height="200">
+        <% end %>
+          <h5 style="margin-bottom: 20px; margin-top: 20px;"><%= item.name %></h5>
+          <h5 style="margin-bottom: 40px;">￥<%= item.price %></h5>
+        </div>
+      </div>
+      <% end %>
+
+      <span class="ml-auto margin-bottom: 30px; margin-top: 50px;">
+        <%= link_to '全ての商品を見る', items_path, class: "btn btn-outline-dark ml-2 mt-3 mb-3", style:"margin-right:20px;" %>
+      </span>
+
+    </div>
+  </div>
+</div>

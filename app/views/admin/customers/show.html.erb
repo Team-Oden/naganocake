@@ -1,2 +1,57 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <h5 class="ml-5 my-4 px-3", style="background-color: #eee; width:300px;"><b><%= @customer.family_name %><%= @customer.first_name %>さんの会員詳細</b></h5>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <tr>
+        <td style="width:160px; background-color: #f5f5f5">会員ID</td>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td style="width:160px; background-color: #f5f5f5">氏名</td>
+        <td><%= @customer.family_name %><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td style="width:160px; background-color: #f5f5f5">フリガナ</td>
+        <td><%= @customer.family_kana %><%= @customer.first_kana %></td>
+      <tr>
+      </tr>
+        <td style="width:160px; background-color: #f5f5f5">郵便番号</td>
+        <td><%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <td style="width:160px; background-color: #f5f5f5">住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td style="width:160px; background-color: #f5f5f5">電話番号</td>
+        <td><%= @customer.telephone_number %></td>
+      </tr>
+      <tr>
+        <td style="width:160px; background-color: #f5f5f5">メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <td style="width:160px; background-color: #f5f5f5">会員ステータス</td>
+        <% if @customer.is_active == true %>
+          <td class="text-success"><b>有効</b></td>
+        <% else %>
+          <td class="text-secondary"><b>退会</b></td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+
+  <div class='row'>
+    <table>
+      <tr>
+        <td>
+          <b><%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "btn btn-success ml-2 mt-3 mb-3 px-5" %></b>
+          <b><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-primary ml-2 mt-3 mb-3 px-5" %></b>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+

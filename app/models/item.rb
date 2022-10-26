@@ -5,9 +5,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  validates :name,presence:true
-  validates :price,presence:true
-  validates :introduction,presence:true
+  validates :name, presence:true
+  validates :price, presence:true
+  validates :introduction, presence:true
 
   def get_image
     unless image.attached?
@@ -15,6 +15,10 @@ class Item < ApplicationRecord
       image.attach(io: File.open(file_path),filename:'default-image.jpg',content_type:'image/jpeg')
     end
     image
+  end
+
+  def add_tax_price
+        (self.price * 1.1).round
   end
 
 end

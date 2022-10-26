@@ -1,2 +1,43 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <h5 class="ml-5 mt-3", style="background-color: #eee; width:150px; padding-left: 12px; margin-bottom: 20px;"><b>注文履歴一覽</b></h5>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead style="background-color: #eee;">
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
+      <% @orders.each do |order| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to admin_order_path(order.id),class: 'text-dark' do %>
+              <u><%= order.created_at.strftime('%Y/%m/%d %X') %><u>
+            <% end %>
+          </td>
+          <td><%= order.customer.full_name %></td>
+          <td>
+            <% total_amount = 0 %>
+            <% order.order_details.each do |order_detail| %>
+              <% total_amount += order_detail.amount %>
+            <% end %>
+            <%= total_amount %>
+          </td>
+          <td><%= order.status_i18n %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>
+

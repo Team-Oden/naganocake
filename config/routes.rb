@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :orders, only:[:show, :update] do
-      resources :order_details, only:[:update]
-    end
+    resources :orders, only:[:show, :update]
+
+    resources :order_details, only:[:update]
 
     resources :customers, only:[:index, :show, :edit, :update]
 
-    resources :genres, only:[:index, :edit, :create, :update]
+    resources :genres, only:[:index, :edit, :create, :update, :destroy]
 
     resources :items, except: [:destroy]
 
@@ -26,9 +26,13 @@ Rails.application.routes.draw do
 
     patch 'customers/withdraw',as: 'withdraw'
     get 'customers/unsubscribe',as: 'unsubscribe'
-    resource :customers, only:[:show, :edit, :update]
+    get 'customers/my_page'=>'customers#show',as: 'my_page'
+    get 'customers/infomation/edit'=>'customers#edit',as: 'edit_infomation'
+    patch 'customers/infomation'=>'customers#update',as: 'infomation'
 
-    resources :items, only:[:index, :show]
+    resources :items, only:[:index, :show]do
+      get '/genre_items' => 'items#genre_items'
+    end
 
     root :to =>"homes#top"
     get '/about'=>'homes#about',as: 'about'

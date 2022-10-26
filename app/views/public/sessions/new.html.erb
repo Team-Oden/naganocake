@@ -1,26 +1,48 @@
-<h2>Log in</h2>
+<div class='container px-5 px-sm-0'>
+  <div class="row">
+    <div class='col-xl-12'>
+      <h4 class="ml-5 mt-3", style="background-color: #eee; width:120px;  text-align: center; margin-bottom: 40px;"><b>ログイン</b></h4>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <h6 class="ml-5 my-5", style="background-color: #eee; width:250px;  text-align: center; margin-bottom: 40px;"><b>会員の方はこちらからログイン</b></h6>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="d-flex align-items-center justify-content-center">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <table class=padding-left: 12px;>
+
+          <tr>
+            <div class="field">
+              <td style="width:160px";><%= f.label :メールアドレス %></td>
+              <td style="width:160px";><%= f.email_field :email, size: 50, autofocus: true, autocomplete: "email", style:"margin-right:10px; margin-bottom: 20px;" %></td>
+            </div>
+          </tr>
+
+
+          <tr>
+            <div class="field mt-1">
+              <td style="width:40px";><%= f.label :パスワード %></td>
+              <td><%= f.password_field :password, size: 50, autocomplete: "current-password", style:"margin-right:10px; margin-bottom: 20px;"  %></td>
+            </div>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="actions">
+                <%= f.submit "ログイン", class: 'btn btn-outline-dark' %>
+              </div>
+            </td>
+          </tr>
+
+        </table>
+        <% end %>
+      </div>
+
+        <h6 class = "mx-5 my-5", style="background-color: #eee; width:220px;  text-align: center; margin-bottom: 20px;"><b>会員登録がお済みでない方</b></h6>
+
+        <div style ="margin-left: 150px;">
+          <%= render "public/shared/links" %>
+        </div>
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

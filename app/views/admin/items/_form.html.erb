@@ -1,0 +1,32 @@
+<%= form_with model: item, url:admin_items_path, local:true do |f| %>
+  <table class="table table-borderless">
+    <tr>
+      <td><%= f.label :image, "商品画像" %></td>
+      <td><%= f.file_field :image, class: 'form-control-file item_image', accept: 'image/*' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :name, "商品名" %></td>
+      <td><%= f.text_field :name, class: 'form-control item_name', placeholder: "商品名" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :introduction, "商品説明" %></td>
+      <td><%= f.text_area :introduction, rows: 5, class: 'form-control item_introduction', placeholder: "ここに説明文を記述します", row: 5 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :genre_id, "ジャンル" %></td>
+      <td><%= f.collection_select :genre_id, @genres, :id, :name, include_blank: '選択してください', class: 'form-control item_genre' , required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :price, "税抜価格" %></td>
+      <td><%= f.number_field :price, class: 'form-control tax_out_price', placeholder: "1000" %></td>
+      <td>円</td>
+    </tr>
+    <tr>
+      <td><%= f.label :is_active, "販売ステータス" %></td>
+      <td><%= f.radio_button :is_active, :true, checked: true %><%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>　<%= f.radio_button :is_active, :false %><%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %></td>
+    </tr>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= f.submit "新規登録", class: 'btn btn-success btn-block' %>
+  </div>
+<% end %>

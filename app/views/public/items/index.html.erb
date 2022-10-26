@@ -1,2 +1,38 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class='container mt-5 h-75'>
+  <div class='row h-100'>
+    <div class='col-md-2'>
+      <%= render 'genre_search', genres: @genres %>
+    </div>
+
+    <div  class='col-md-10'>
+      <div>
+        <div class = "new-arrival">
+          <div style="display:flex; flex-wrap:wrap;">
+            <h3><strong>商品一覧</strong></h3>
+            <div class="mt-2"><strong>（全<%= @items.count%>件）</strong></div>
+          </div>
+          <div class = "new-arrival-contents" style="display:flex; flex-wrap:wrap;">
+            <% @items.each do |item| %>
+            <div class="col-lg-3">
+              <div class="d-flex flex-column">
+                <% if item.is_active == true %>
+                  <%= link_to  item_path(item.id) do %>
+                    <%= image_tag item.get_image, size:'200x160' %>
+                  <% end %>
+                <% else %>
+                  <img src='/assets/sold-out.png' width="200" height="160">
+                <% end %>
+                  <h5 style="margin-bottom: 20px; margin-top: 20px;"><%= item.name %></h5>
+                  <h5 style="margin-bottom: 40px;">￥<%= item.price %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <%= paginate @items %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

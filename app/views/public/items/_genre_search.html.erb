@@ -1,0 +1,12 @@
+<div class = "genre-search-head border border-dark text-center">
+  <b>ジャンル検索</b>
+</div>
+<div class = "genre-search-contents border border-dark", style = "height:300px">
+  <% genres.each do |genre| %>
+    <p class = "ml-2 mt-2">
+      <%= link_to item_genre_items_path(genre), class:"text-dark" do %>
+        <%= genre.name %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
